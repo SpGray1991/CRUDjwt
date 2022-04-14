@@ -69,6 +69,34 @@ class authController {
       console.log(e);
     }
   }
+
+  async update(req, res) {
+    try {
+      console.log("=====", req.body);
+      const updatedUser = await User.findByIdAndUpdate(req.body._id, req.body, {
+        new: true,
+      });
+      if (!req.body._id) {
+        return res.status(400).json({ message: `Введите id` });
+      }
+
+      return res.json(updatedUser);
+    } catch (e) {
+      res.status(500).json(e.message);
+    }
+  }
+
+  async delete(req, res) {
+    try {
+      const user = await User.findByIdAndRemove(req.params.id);
+      if (!req.params.id) {
+        return res.status(400).json({ message: `Введите id` });
+      }
+      return res.json(user);
+    } catch (e) {
+      res.status(500).json(e);
+    }
+  }
 }
 
 export default new authController();

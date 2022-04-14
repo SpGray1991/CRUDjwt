@@ -19,5 +19,7 @@ router.post(
 );
 router.post("/login", controller.login);
 router.get("/users", roleMiddleware(["USER", "ADMIN"]), controller.getUsers);
+router.put("/users", controller.update);
+router.delete("/users/:id", controller.delete);
 
 export default router;
