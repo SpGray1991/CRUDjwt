@@ -1,0 +1,17 @@
+2022-04-15 22:58 error: TokenExpiredError: jwt expired
+2022-04-15 23:03 error: jwt expired
+2022-04-15 23:04 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:04 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:05 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:10 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:12 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:21 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:21 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:24 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:24 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:25 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:26 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:29 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:29 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:41 error: Cannot read properties of undefined (reading 'split')
+2022-04-15 23:45 error: Cannot set headers after they are sent to the client

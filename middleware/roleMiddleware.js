@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-import secret from "../config.js";
+import secret from "../config/config.js";
+import log from "../config/winston.js";
 
 export default function (roles) {
   return function (req, res, next) {
@@ -8,6 +9,7 @@ export default function (roles) {
     }
 
     try {
+      console.log("token", req.headers);
       const token = req.headers.authorization.split(" ")[1];
       if (!token) {
         return res.status(400).json({ message: "Пользователь не авторизован" });
@@ -24,7 +26,7 @@ export default function (roles) {
       });
       next();
     } catch (e) {
-      console.log(e);
+      log.error(e);
       return res.status(400).json({ message: "Пользователь не авторизован" });
     }
   };

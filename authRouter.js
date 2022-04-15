@@ -18,7 +18,7 @@ router.post(
   controller.registration
 );
 router.post("/login", controller.login);
-router.get("/users", roleMiddleware(["USER", "ADMIN"]), controller.getUsers);
+router.get("/users", roleMiddleware(["ADMIN"]), controller.getUsers);
 router.put("/users", controller.update);
 router.delete("/users/:id", controller.delete);
 

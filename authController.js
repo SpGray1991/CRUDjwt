@@ -2,15 +2,16 @@ import User from "./models/User.js";
 import Role from "./models/Role.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import secret from "./config.js";
+import secret from "./config/config.js";
 import { validationResult } from "express-validator";
+import log from "./config/winston.js";
 
 const generateAccessToken = (id, roles) => {
   const payload = {
     id,
     roles,
   };
-  return jwt.sign(payload, secret.secret, { expiresIn: "24h" });
+  return jwt.sign(payload, secret.secret, { expiresIn: "48h" });
 };
 
 class authController {
@@ -44,17 +45,23 @@ class authController {
   async login(req, res) {
     try {
       const { username, password } = req.body;
+
       const user = await User.findOne({ username });
+
       if (!user) {
         return res
           .status(400)
           .json({ message: `Пользователь ${username} не найден` });
       }
+
       const validPassword = bcrypt.compareSync(password, user.password);
+
       if (!validPassword) {
         return res.status(400).json({ message: `Введен не верный пароль` });
       }
+
       const token = generateAccessToken(user._id, user.roles);
+
       return res.json({ token });
     } catch (e) {
       console.log(e);
@@ -66,7 +73,7 @@ class authController {
       const users = await User.find();
       res.json(users);
     } catch (e) {
-      console.log(e);
+      log.error(e);
     }
   }
 

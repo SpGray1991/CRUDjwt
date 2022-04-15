@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-import secret from "../config.js";
+import secret from "../config/config.js";
+import log from "../config/winston.js";
 
 export default function (req, res, next) {
   if (req.method === "OPTIONS") {
@@ -15,7 +16,7 @@ export default function (req, res, next) {
     req.user = decodedData;
     next();
   } catch (e) {
-    console.log(e);
+    log.error(e);
     return res.status(400).json({ message: "Пользователь не авторизован" });
   }
 }
