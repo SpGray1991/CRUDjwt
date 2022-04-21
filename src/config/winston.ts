@@ -1,9 +1,10 @@
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'winston' or its corresponding ... Remove this comment to see the full error message
 import winston from "winston";
 
 const format = winston.format.combine(
   winston.format.timestamp({ format: "YYYY-MM-DD HH:mm" }),
   winston.format.printf(
-    (info) => `${info.timestamp} ${info.level}: ${info.message}`
+    (info: any) => `${info.timestamp} ${info.level}: ${info.message}`
   )
 );
 

@@ -1,4 +1,6 @@
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'express' or its corresponding ... Remove this comment to see the full error message
 import express from "express";
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'mongoose' or its corresponding... Remove this comment to see the full error message
 import mongoose from "mongoose";
 import router from "./authRouter.js";
 import log from "./config/winston.js";

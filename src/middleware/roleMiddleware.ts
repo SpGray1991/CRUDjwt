@@ -1,9 +1,10 @@
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'jsonwebtoken' or its correspon... Remove this comment to see the full error message
 import jwt from "jsonwebtoken";
 import secret from "../config/config.js";
 import log from "../config/winston.js";
 
-export default function (roles) {
-  return function (req, res, next) {
+export default function (roles: any) {
+  return function (req: any, res: any, next: any) {
     if (req.method === "OPTIONS") {
       next();
     }
@@ -16,7 +17,7 @@ export default function (roles) {
       }
       const { roles: userRoles } = jwt.verify(token, secret.secret);
       let hasRole = false;
-      userRoles.forEach((role) => {
+      userRoles.forEach((role: any) => {
         if (roles.includes(role)) {
           hasRole = true;
         }

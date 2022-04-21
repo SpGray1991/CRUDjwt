@@ -1,12 +1,15 @@
 import User from "./models/User.js";
 import Role from "./models/Role.js";
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'bcrypt' or its corresponding t... Remove this comment to see the full error message
 import bcrypt from "bcrypt";
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'jsonwebtoken' or its correspon... Remove this comment to see the full error message
 import jwt from "jsonwebtoken";
 import secret from "./config/config.js";
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'express-validator' or its corr... Remove this comment to see the full error message
 import { validationResult } from "express-validator";
 import log from "./config/winston.js";
 
-const generateAccessToken = (id, roles) => {
+const generateAccessToken = (id: any, roles: any) => {
   const payload = {
     id,
     roles,
@@ -15,7 +18,7 @@ const generateAccessToken = (id, roles) => {
 };
 
 class authController {
-  async registration(req, res) {
+  async registration(req: any, res: any) {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -42,7 +45,7 @@ class authController {
       res.status(400).json({ message: "Registration error" });
     }
   }
-  async login(req, res) {
+  async login(req: any, res: any) {
     try {
       const { username, password } = req.body;
 
@@ -68,7 +71,7 @@ class authController {
       res.status(400).json({ message: "Login error" });
     }
   }
-  async getUsers(req, res) {
+  async getUsers(req: any, res: any) {
     try {
       const users = await User.find();
       res.json(users);
@@ -77,7 +80,7 @@ class authController {
     }
   }
 
-  async update(req, res) {
+  async update(req: any, res: any) {
     try {
       console.log("=====", req.body);
       const updatedUser = await User.findByIdAndUpdate(req.body._id, req.body, {
@@ -93,7 +96,7 @@ class authController {
     }
   }
 
-  async delete(req, res) {
+  async delete(req: any, res: any) {
     try {
       const user = await User.findByIdAndRemove(req.params.id);
       if (!req.params.id) {
