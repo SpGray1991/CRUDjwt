@@ -1,6 +1,6 @@
-const net = require("net"),
-  fs = require("fs"),
-  remote_server = process.argv[2];
+import net from "net";
+import fs from "fs";
+const remote_server = process.argv[2];
 let socket;
 
 socket = remote_server ? net.connect(8000, remote_server) : net.connect(8000);

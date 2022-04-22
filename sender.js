@@ -1,5 +1,5 @@
-const net = require("net"),
-  fs = require("fs");
+import net from "net";
+import fs from "fs";
 
 let server,
   istream = fs.createReadStream("./sender/File.txt");
